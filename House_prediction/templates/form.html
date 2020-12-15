@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+<style type="text/css"> 
+    body{  
+        background-image: url("{{url_for('static', filename='imm.jpg')}}");
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+
+        }
+        textarea{
+          border-color:rgb(245, 9, 205) ;
+          background-image: url("{{url_for('static', filename='affordable.png')}}");
+          position: left;
+          padding-left: 10;
+          background-size: 50px;
+          background-repeat: no-repeat;
+          border-radius: 8px;
+
+        }
+ 
+    
+ .ui{
+     padding:30px;
+     margin-top: 50px;
+     border-radius: 10px;
+     opacity: 0.9;
+    }
+ .ui label {
+    color:rgb(214, 120, 194); }
+ .uu{
+   background-color:rgb(80, 137, 139);
+   
+    }
+ 
+ h1{
+    color:rgb(136, 244, 252); 
+    font-style: oblique;
+   }
+form{
+    font-weight: bold;
+    }
+::placeholder {
+    font-size:10px; 
+     }
+
+</style>
+
+</head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"> 
+                    <div  class="ui">
+                    <div class="anim"><h1 class="text-center">Housing prices</h1></div>    
+
+                        
+                        <form method="POST" action="{{ url_for('predict')}}" class="form-group text-center ">
+                            <div class="row">
+                            <div class="col-lg-6">
+                                <label>Longitude</label>
+                                <input type="text" name="longitude" class="form-control" placeholder="Longitude" >
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Latitude</label>
+                                <input type="text" name="latitude" class="form-control" placeholder="Latitude">
+                            </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>Housing_median_age</label>
+                                    <input type="text" name="housing_median_age" class="form-control" placeholder="housing_median_age">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>total_rooms</label>
+                                    <input type="text" name="total_rooms" class="form-control" placeholder="total_rooms">
+                                </div>
+                               
+                            </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <label>total_bedrooms</label>
+                                        <input type="text" name="total_bedrooms" class="form-control" placeholder="population">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>population</label>
+                                        <input type="text" name="population" class="form-control" placeholder="households">
+                                    </div>
+                                </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label>households</label>
+                                            <input type="text" name="households" class="form-control" placeholder="median_income">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>median_income</label>
+                                            <input type="text" name="median_income" class="form-control" placeholder="total_bedroom">
+                                        </div>
+                                        </div>
+                                        <br>
+                                        <label>ocean_proximity </label>
+                                            <select class="form-control select" name="ocean_proximity">
+                                                <option value="INLAND"> INLAND  </option>
+                                                <option value="NEAR OCEAN"> NEAR OCEAN </option>
+                                                <option value="NEAR BAY"> NEAR BAY</option>
+                                                <option value="ISLAND "> ISLAND </option>
+                                               
+                                            </select>
+                                            <br>
+                               <input type="submit" class="  btn-primary btn-block btn-lg uu ">
+                        </form>
+                </div>
+            </div>
+            <div style="text-align:right; margin-top:350px;">
+              <textarea rows="2" cols="25" style="text-align:right;padding-right:30px ">{{prediction_text}}</textarea></div>
+        </div>
+    </body>
+</html>
